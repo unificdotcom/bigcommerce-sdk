@@ -3,11 +3,10 @@ package com.bigcommerce.catalog.models;
 public enum CouponType {
     per_item_discount("per_item_discount"), per_total_discount("per_total_discount"), shipping_discount("shipping_discount"), free_shipping(
             "free_shipping"), percentage_discount("percentage_discount");
-
     static final String NO_MATCHING_ENUMS_ERROR_MESSAGE = "No matching enum found for %s";
-    private final String value;
+    public final String value;
 
-    private CouponType(final String value) {
+    CouponType(final String value) {
         this.value = value;
     }
 
