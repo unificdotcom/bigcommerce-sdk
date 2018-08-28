@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.1.xsd">
+    <suppress>
+        <notes><![CDATA[file name: sqlite4java-1.0.392.jar]]></notes>
+        <gav regex="true">^com\.almworks\.sqlite4java:sqlite4java:.*$</gav>
+        <cpe>cpe:/a:sqlite:sqlite</cpe>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[file name: sqlite4java-win32-x64-1.0.392.dll]]></notes>
+        <sha1>d20dc00abecc7e0bde38c68eee68f2e70c26df95</sha1>
+        <cpe>cpe:/a:sqlite:sqlite</cpe>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[file name: sqlite4java-win32-x86-1.0.392.dll]]></notes>
+        <sha1>df89be9a5875efc200299acc6f2b94d200271037</sha1>
+        <cpe>cpe:/a:sqlite:sqlite</cpe>
+    </suppress>
+
+    <!-- the next two are used by dynamodb-testing, which will only be used in test scope -->
+    <suppress>
+        <gav regex="true">^org\.eclipse\.jetty:jetty-.*:8\.1\.12\.v20130726$</gav>
+        <cve>CVE-2017-9735</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[file name: javax.servlet-3.0.0.v201112011016.jar]]></notes>
+        <sha1>0aaaa85845fb5c59da00193f06b8e5278d8bf3f8</sha1>
+        <cve>CVE-2017-9735</cve>
+    </suppress>
+
+    <!-- https://nvd.nist.gov/vuln/detail/CVE-2016-7051 -->
+    <suppress>
+        <notes><![CDATA[core, databind and annotations]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\..*:jackson-.*:2\.9\.[0-9]$</gav>
+        <cve>CVE-2016-7051</cve>
+    </suppress>
+
+    <!-- https://nvd.nist.gov/vuln/detail/CVE-2017-17485 -->
+    <suppress>
+        <notes><![CDATA[file name: jackson-databind-2.8.10.jar]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+        <cve>CVE-2017-17485</cve>
+    </suppress>
+
+    <!-- https://nvd.nist.gov/vuln/detail/CVE-2015-3373 -->
+    <suppress>
+        <notes><![CDATA[file name: aws-lambda-java-core-1.2.0.jar]]></notes>
+        <gav regex="true">^com\.amazonaws:aws-lambda-java-core:.*$</gav>
+        <cve>CVE-2015-3373</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[file name: aws-lambda-java-log4j-1.0.0.jar]]></notes>
+        <gav regex="true">^com\.amazonaws:aws-lambda-java-log4j:.*$</gav>
+        <cve>CVE-2015-3373</cve>
+    </suppress>
+
+    <!-- https://nvd.nist.gov/vuln/detail/CVE-2016-6497 -->
+    <suppress>
+        <notes><![CDATA[file name: groovy-all-2.4.11-indy.jar]]></notes>
+        <sha1>2818788746ba372f11169437a8ede0605a40bd23</sha1>
+        <cve>CVE-2016-6497</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[file name: groovy-all-2.4.12-indy.jar]]></notes>
+        <sha1>2818788746ba372f11169437a8ede0605a40bd23</sha1>
+        <cve>CVE-2016-6497</cve>
+    </suppress>
+
+    <!-- https://nvd.nist.gov/vuln/detail/CVE-2017-15288 -->
+    <suppress>
+        <notes><![CDATA[file name: scala-compiler-2.12.3.jar]]></notes>
+        <gav regex="true">^jline:jline:.*$</gav>
+        <cve>CVE-2017-15288</cve>
+    </suppress>
+
+    <!-- https://nvd.nist.gov/vuln/detail/CVE-2015-2156 -->
+    <suppress>
+        <notes><![CDATA[file name: unfiltered-netty_2.12-0.9.1.jar]]></notes>
+        <gav regex="true">^ws\.unfiltered:unfiltered-netty_2\.12\.netty_project:.*$</gav>
+        <cve>CVE-2015-2156</cve>
+    </suppress>
+
+    <!-- https://nvd.nist.gov/vuln/detail/CVE-2014-3488 -->
+    <suppress>
+        <notes><![CDATA[file name: unfiltered-netty_2.12-0.9.1.jar]]></notes>
+        <gav regex="true">^ws\.unfiltered:unfiltered-netty_2\.12\.netty_project:.*$</gav>
+        <cve>CVE-2014-3488</cve>
+    </suppress>
+
+    <suppress>
+        <notes><![CDATA[file name: amazon-kinesis-producer-0.12.8.jar]]></notes>
+        <gav regex="true">^com\.amazonaws:amazon-kinesis-producer:.*$</gav>
+        <cpe>cpe:/a:amazon_aws_project:amazon_aws</cpe>
+    </suppress>
+
+    <suppress>
+        <notes><![CDATA[file name: protobuf-java-2.6.1.jar]]></notes>
+        <gav regex="true">^com\.google\.protobuf:protobuf-java:.*$</gav>
+        <cpe>cpe:/a:google:protobuf</cpe>
+    </suppress>
+
+    <suppress>
+        <notes><![CDATA[file name: jackson-databind-2.8.11.jar]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+        <cve>CVE-2018-7489</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[file name: jackson-dataformat-xml-2.8.11.jar]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.dataformat:jackson-dataformat-xml:.*$</gav>
+        <cve>CVE-2018-7489</cve>
+    </suppress>
+    <suppress>
+        <notes><![CDATA[file name: jackson-databind-2.9.4.jar]]></notes>
+        <gav regex="true">^com\.fasterxml\.jackson\.core:jackson-databind:.*$</gav>
+        <cve>CVE-2018-7489</cve>
+    </suppress>
+
+</suppressions>
