@@ -8,6 +8,9 @@
 *.iml
 *.iws
 *.ipr
+target
+native-libs
+package-lock.json
 
 # Mac
 .DS_Store
