@@ -1,0 +1,100 @@
+version: 2
+jobs:
+  build:
+    environment:
+      - MAVEN_OPTS: "-Xms1024m -Xmx2048m"
+    working_directory: ~/bigcommerce-sdk
+    docker:
+      - image: underwaterpony/centos:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: maven-{{ checksum "pom.xml" }}
+
+      - run: mvn site deploy -s settings.xml --batch-mode -Dowasp.dependency.check.skip=false --update-snapshots
+        #command: |
+        #  git config user.email circleci@circleci
+        #  git config user.name CircleCI
+        #  mvn site verify deploy scm:tag -s settings.xml --batch-mode -Dowasp.dependency.check.skip=false --update-snapshots
+
+      - save_cache:
+          key: maven-{{ checksum "pom.xml" }}
+          paths:
+            - "~/.m2"
+
+      - store_test_results:
+          paths:
+            - guice-modules/target/surefire-reports
+            - guice-modules/target/failsafe-reports
+            - pact/target/surefire-reports
+            - pact/target/failsafe-reports
+            - sentinel/target/surefire-reports
+            - sentinel/target/failsafe-reports
+            - sentinel-api/target/surefire-reports
+            - sentinel-api/target/failsafe-reports
+            - spring-boot/target/surefire-reports
+            - spring-boot/target/failsafe-reports
+            - unific-testing/target/surefire-reports
+            - unific-testing/target/failsafe-reports
+            - unific-utils/target/surefire-reports
+            - unific-utils/target/failsafe-reports
+
+      - store_artifacts:
+          path: target/site
+          destination: site
+
+      - store_artifacts:
+          path: guice-modules/target/site
+          destination: guice-modules/site
+      - store_artifacts:
+          path: guice-modules/target/spotbugs
+          destination: guice-modules/spotbugs
+
+      - store_artifacts:
+          path: pact/target/site
+          destination: pact/site
+      - store_artifacts:
+          path: pact/target/spotbugs
+          destination: pact/spotbugs
+
+      - store_artifacts:
+          path: sentinel/target/site
+          destination: sentinel/site
+      - store_artifacts:
+          path: sentinel/target/spotbugs
+          destination: sentinel/spotbugs
+
+      - store_artifacts:
+          path: sentinel-api/target/site
+          destination: sentinel-api/site
+      - store_artifacts:
+          path: sentinel-api/target/spotbugs
+          destination: sentinel-api/spotbugs
+
+      - store_artifacts:
+          path: spring-boot/target/site
+          destination: spring-boot/site
+      - store_artifacts:
+          path: spring-boot/target/spotbugs
+          destination: spring-boot/spotbugs
+
+      - store_artifacts:
+          path: unific-testing/target/site
+          destination: unific-testing/site
+      - store_artifacts:
+          path: unific-testing/target/spotbugs
+          destination: unific-testing/spotbugs
+
+      - store_artifacts:
+          path: unific-utils/target/site
+          destination: unific-utils/site
+      - store_artifacts:
+          path: unific-utils/target/spotbugs
+          destination: unific-utils/spotbugs
+
+workflows:
+  version: 2
+  my-workflow:
+    jobs:
+      - build:
+          context: unific-test

@@ -17,55 +17,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import com.bigcommerce.catalog.models.*;
 import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.bigcommerce.catalog.models.Address;
-import com.bigcommerce.catalog.models.AddressResponse;
-import com.bigcommerce.catalog.models.Brand;
-import com.bigcommerce.catalog.models.BrandResponse;
-import com.bigcommerce.catalog.models.Brands;
-import com.bigcommerce.catalog.models.BrandsResponse;
-import com.bigcommerce.catalog.models.CatalogSummary;
-import com.bigcommerce.catalog.models.CatalogSummaryResponse;
-import com.bigcommerce.catalog.models.Categories;
-import com.bigcommerce.catalog.models.CategoriesResponse;
-import com.bigcommerce.catalog.models.Category;
-import com.bigcommerce.catalog.models.CategoryResponse;
-import com.bigcommerce.catalog.models.CustomField;
-import com.bigcommerce.catalog.models.CustomFieldResponse;
-import com.bigcommerce.catalog.models.Customer;
-import com.bigcommerce.catalog.models.LineItem;
-import com.bigcommerce.catalog.models.LineItemsResponse;
-import com.bigcommerce.catalog.models.Metafield;
-import com.bigcommerce.catalog.models.MetafieldResponse;
-import com.bigcommerce.catalog.models.Metafields;
-import com.bigcommerce.catalog.models.MetafieldsResponse;
-import com.bigcommerce.catalog.models.Order;
-import com.bigcommerce.catalog.models.OrderStatus;
-import com.bigcommerce.catalog.models.OrderStatusResponse;
-import com.bigcommerce.catalog.models.OrdersResponse;
-import com.bigcommerce.catalog.models.Pagination;
-import com.bigcommerce.catalog.models.Product;
-import com.bigcommerce.catalog.models.ProductImage;
-import com.bigcommerce.catalog.models.ProductImageResponse;
-import com.bigcommerce.catalog.models.ProductImages;
-import com.bigcommerce.catalog.models.ProductImagesResponse;
-import com.bigcommerce.catalog.models.ProductResponse;
-import com.bigcommerce.catalog.models.Products;
-import com.bigcommerce.catalog.models.ProductsResponse;
-import com.bigcommerce.catalog.models.Shipment;
-import com.bigcommerce.catalog.models.ShipmentCreationRequest;
-import com.bigcommerce.catalog.models.ShipmentResponse;
-import com.bigcommerce.catalog.models.ShipmentUpdateRequest;
-import com.bigcommerce.catalog.models.Store;
-import com.bigcommerce.catalog.models.Variant;
-import com.bigcommerce.catalog.models.VariantResponse;
-import com.bigcommerce.catalog.models.Variants;
-import com.bigcommerce.catalog.models.VariantsResponse;
 import com.bigcommerce.exceptions.BigcommerceErrorResponseException;
 import com.bigcommerce.exceptions.BigcommerceException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -97,6 +55,7 @@ public class BigcommerceSdk {
 	private static final String CUSTOM_FIELDS = "custom-fields";
 	private static final String BRANDS = "brands";
 	private static final String ORDERS = "orders";
+	private static final String COUPONS = "coupons";
 	private static final String CUSTOMERS = "customers";
 	private static final String LIMIT = "limit";
 	private static final String PAGE = "page";
@@ -270,6 +229,14 @@ public class BigcommerceSdk {
 		final ProductResponse productResponse = post(webTarget, product, ProductResponse.class);
 
 		return productResponse.getData();
+	}
+
+	public Coupon createCoupon(final Coupon coupon) {
+		final WebTarget webTarget = baseWebTargetV2.path(COUPONS);
+		//final CouponResponse coupon1 = post(webTarget, coupon, CouponResponse.class);
+
+		final Coupon coupon1=post(webTarget, coupon, Coupon.class);
+		return coupon1;
 	}
 
 	public Product updateProduct(final Product product) {
